@@ -1,0 +1,8 @@
+<div>
+    <label>{{ labelText }}</label>
+    <select formControlName="control" (change)="onSelectionChange(control.value)">
+      <option *ngFor="let item of items" [value]="item.CODE">
+        {{ item.DESCRIPTION }}
+      </option>
+    </select>
+  </div>
