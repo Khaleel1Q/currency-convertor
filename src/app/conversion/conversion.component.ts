@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../main/api.service';
-import { FormGroup,FormBuilder, FormControl } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-conversion',
   standalone: false,
@@ -9,22 +9,19 @@ import { FormGroup,FormBuilder, FormControl } from '@angular/forms';
 })
 export class ConversionComponent implements OnInit{
 countries: { CODE: string; DESCRIPTION: any; }[] =[];
-sourceCountry:FormControl;
-targetCountries: FormControl;
+targetCountry:string;
+// targetCountries: FormControl;
 constructor(
   private apiSvc: ApiService,
-  private fb:FormBuilder
 ){}
 
 ngOnInit(): void {
   this.apiSvc.allCountries.subscribe(countries=>{
     this.countries=countries;
   });
-
-  this.sourceCountry.setValue('INR')
-  console.log(this.sourceCountry)
-
-
 }
 
+setTargetCountry(event:{ CODE: string; DESCRIPTION: any; }){
+this.targetCountry = event.CODE
+}
 }

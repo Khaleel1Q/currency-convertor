@@ -1,1 +1,7 @@
-<app-dropdown [items]="countries" [control]="sourceCountry" [labelText]="'Selct Source Currency'"></app-dropdown>
+<div class="container">
+    <div class="label fs-6 fw-bold">Currency Convertor</div>
+    <app-dropdown [items]="countries" [isTarget]="false" [labelText]="'Your Currency'"></app-dropdown>
+    <app-dropdown [items]="countries" [isTarget]="true" [labelText]="'Currency to Convert'"
+        (selectedValue)="setTargetCountry($event)"></app-dropdown>
+    <app-input></app-input>
+</div>

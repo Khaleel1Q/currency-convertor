@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-
+  sourceCountry = new BehaviorSubject<string>('INR');
   constructor(private http:HttpClient) { }
-  allCountries = new BehaviorSubject<{CODE:string,DESCRIPTION: any}[]>([]);
+  allCountries = new BehaviorSubject<{CODE:string,DESCRIPTION: any,SELECTED:boolean}[]>([]);
   getAllCountries(){
     return this.http.get(`https://api.currencylayer.com/list?access_key=3931175354f205a8dacee2d94782068a`)
   }

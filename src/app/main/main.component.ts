@@ -18,7 +18,8 @@ data:any;
         CODE,
         DESCRIPTION
       }));
-      this.apiService.allCountries.next(tempCountries)
+      let countries = tempCountries.map(country=>{return {...country,SELECTED:false}})
+      this.apiService.allCountries.next(countries)
     });
 
     this.apiService.allCountries.subscribe(allCountries=>{

@@ -1,8 +1,6 @@
-<div>
-    <label>{{ labelText }}</label>
-    <select formControlName="control" (change)="onSelectionChange(control.value)">
-      <option *ngFor="let item of items" [value]="item.CODE">
-        {{ item.DESCRIPTION }}
-      </option>
-    </select>
+<div class="dropdown-container col-lg-10">
+    <label class="fw-semibold">{{ labelText }}</label>
+    <ng-select [items]="items" [searchable]="true" bindLabel="DESCRIPTION"  bindValue="CODE"
+    placeholder="Select Product" (change)="onSelectionChange($event)" [(ngModel)]="selectedCountry">  
+    </ng-select>
   </div>
